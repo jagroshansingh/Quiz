@@ -1,0 +1,7 @@
+.container{
+    display:flex;
+    justify-content: space-evenly;
+    border:1px solid;
+    padding: 1%;
+    color:blue;
+}
