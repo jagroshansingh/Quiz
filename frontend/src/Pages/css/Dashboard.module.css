@@ -4,3 +4,10 @@
     justify-content: flex-end;
     padding: 2%;
 }
+
+.cardContainer{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    text-align: center;
+    gap:1%
+}

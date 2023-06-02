@@ -1,0 +1,10 @@
+.cardContainer{
+    border:1px solid;
+    padding: 2%;
+    border-radius: 5px;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: space-evenly;
+}

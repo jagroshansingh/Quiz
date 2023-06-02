@@ -11,4 +11,13 @@ bankRouter.post('/create',async(req,res)=>{
     }
 })
 
+bankRouter.get('/',async(req,res)=>{
+    try {
+        let found=await bankModel.find()
+        res.send(found)
+    } catch (error) {
+        res.send(error)
+    }
+})
+
 module.exports={bankRouter}

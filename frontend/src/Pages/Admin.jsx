@@ -10,7 +10,7 @@ export const Admin = () => {
             <Link to={'/admin/signup'}>SignUp</Link>
             <Link to={'/admin/signin'}>SignIn</Link>
             <Link to={'/admin/dashboard'}>DashBoard</Link>
-            <Link to={'/admin/quiz'}>Quiz</Link>
+            <Link to={'/quiz'}>Quiz</Link>
             <Link to={'/admin/leaderboard'}>LeaderBoard</Link>
         </Box>
     </div>
