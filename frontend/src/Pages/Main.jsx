@@ -9,7 +9,7 @@ export const Main = () => {
     <div>
       <Box className={styles.container}>
         <Button>Play</Button>
-        <Button onClick={()=>navigate('/admin/dashboard')}>Admin</Button>
+        <Button onClick={()=>navigate('/admin/signin')}>Admin</Button>
       </Box>
     </div>
   );

@@ -7,6 +7,7 @@ import { Quiz } from './Quiz'
 import { Leaderboard } from './Leaderboard'
 import { Main } from './Main'
 import { Admin } from './Admin'
+import { CreateQuiz } from './CreateQuiz'
 
 export const AllRoutes = () => {
   return (
@@ -19,6 +20,7 @@ export const AllRoutes = () => {
             <Route path='/admin/dashboard' element={<Dashboard/>}></Route>
             <Route path='/admin/quiz' element={<Quiz/>}></Route>
             <Route path='/admin/leaderboard' element={<Leaderboard/>}></Route>
+            <Route path='/admin/createQuiz' element={<CreateQuiz/>}></Route>
         </Routes>
     </div>
   )
