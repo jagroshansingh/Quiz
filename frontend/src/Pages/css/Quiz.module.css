@@ -1,0 +1,26 @@
+.quizContainer{
+    width:60%;
+    margin:auto;
+    border: 0px solid;
+    height: 100vh;
+    display: grid;
+    align-content: center;
+    text-align: center;
+}
+
+.optionsContainer>p{
+    border: 1px solid rgb(225, 223, 223);
+    text-align: start;
+    padding: 2%;
+    border-radius: 4px;
+}
+
+.optionsContainer>p:hover{
+    border:1px solid grey
+}
+
+.optionsContainer{
+    border: 0px solid;
+    display: grid;
+    gap:2%;
+}

@@ -20,4 +20,13 @@ bankRouter.get('/',async(req,res)=>{
     }
 })
 
+bankRouter.get('/single',async(req,res)=>{
+    try {
+        let found=await bankModel.find({_id:req.headers.id})
+        res.send(found)
+    } catch (error) {
+        res.send(error)
+    }
+})
+
 module.exports={bankRouter}

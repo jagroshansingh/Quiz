@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom'
 
 export const CreateQuizCard = ({details}) => {
     const navigate=useNavigate()
-    const {creator,title,description,questionBank}=details
+    const {_id,creator,title,description,questionBank}=details
 
     const handleQuiz=()=>{
-        navigate('/quiz')
+        navigate(`/quiz/${_id}`)
     }
   return (
     <div>
