@@ -1,0 +1,29 @@
+.optionsContainer>p{
+    border: 1px solid rgb(225, 223, 223);
+    text-align: start;
+    padding: 2%;
+    border-radius: 4px;
+}
+
+.optionsContainer>p:hover{
+    border:1px solid grey
+}
+
+.optionsContainer{
+    border: 1px solid;
+    padding:5% 5% 9% 5%;
+    display: grid;
+    gap:2%;
+}
+
+.questionContainer{
+    display: flex;
+    border:0px solid;
+    justify-content: space-between;
+    margin-bottom: 1%;
+}
+
+.questionContainer>h2:last-child{
+    width: 75px;
+    border:0px solid
+}

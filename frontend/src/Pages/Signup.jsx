@@ -10,7 +10,6 @@ export const Signup = () => {
         password:""
     }
     const [credential,setCredential]=React.useState(initial)
-    console.log(credential)
 
     const handleChange=(e)=>{
         setCredential({...credential,[e.target.type]:e.target.value})

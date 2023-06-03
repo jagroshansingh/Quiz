@@ -2,8 +2,10 @@ import { Box, Button, Heading, Input, VStack } from '@chakra-ui/react'
 import React from 'react'
 import styles from './css/CreateQuiz.module.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export const CreateQuiz = () => {
+    const navigate=useNavigate()
     let initialBank=[]
     const [questionBank,setQuestionBank]=React.useState(initialBank)
     // console.log(questionBank)
@@ -11,7 +13,7 @@ export const CreateQuiz = () => {
     let initialQuestion={
         questionTitle:"",
         answerOptions:[],
-        correctOptions:[]
+        correctOption:""
     }
     const [question,setQuestion]=React.useState(initialQuestion)
     // console.log(question)
@@ -27,7 +29,7 @@ export const CreateQuiz = () => {
     }
 
     const handleQuestion=(q)=>{
-        if(q.target.name=='questionTitle') setQuestion({...question,questionTitle:q.target.value})
+        if(q.target.name!='answerOptions') setQuestion({...question,[q.target.name]:q.target.value})
         else
         {
             setQuestion({...question,[q.target.name]:q.target.value.split(",")})
@@ -45,7 +47,10 @@ export const CreateQuiz = () => {
             url:`${process.env.REACT_APP_URL}/quiz/create`,
             data:{...details,questionBank}
         })
-        .then(res=>alert(res.data))
+        .then(res=>{
+            alert(res.data)
+            navigate('/admin/dashboard')
+        })
         .catch(err=>console.log(err))
     }
 
@@ -60,7 +65,7 @@ export const CreateQuiz = () => {
                 <Heading size={'md'}>Question no.{questionBank.length+1}</Heading>
                 <Input placeholder='Question Title' name='questionTitle' onChange={handleQuestion} value={question.questionTitle}></Input>
                 <Input placeholder='Answer Options' name='answerOptions' onChange={handleQuestion} value={question.answerOptions}></Input>
-                <Input placeholder='Correct Options' name='correctOptions' onChange={handleQuestion} value={question.correctOptions}></Input>
+                <Input placeholder='Correct Option' name='correctOption' onChange={handleQuestion} value={question.correctOption}></Input>
                 <Button onClick={handleNextQuestion}>Next</Button>
             </VStack>
             <VStack>

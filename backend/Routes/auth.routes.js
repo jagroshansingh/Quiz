@@ -38,4 +38,15 @@ authRouter.post("/login",async(req,res)=>{
     }
 })
 
+authRouter.get("/verify",async(req,res)=>{
+  try {
+    jwt.verify(req.headers.token,'masai',(err,decoded)=>{
+      if(decoded) res.send('verified')
+      else res.send('not verified')
+    })
+  } catch (error) {
+    res.send(error)
+  }
+})
+
 module.exports = { authRouter };

@@ -8,8 +8,8 @@ export const Main = () => {
   return (
     <div>
       <Box className={styles.container}>
-        <Button>Play</Button>
-        <Button onClick={()=>navigate('/admin/signin')}>Admin</Button>
+        <Button>Quick Play</Button>
+        <Button onClick={()=>navigate('/admin/signin')}>Create & Play</Button>
       </Box>
     </div>
   );
