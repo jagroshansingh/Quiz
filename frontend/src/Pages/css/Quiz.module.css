@@ -15,6 +15,7 @@
     justify-content: space-around;
 }
 
-body{
+.quizBody{
     background-color: teal;
+    color:white
 }

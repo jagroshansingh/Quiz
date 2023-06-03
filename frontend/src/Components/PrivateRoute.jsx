@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const PrivateRoute = ({ children }) => {
   const [status, setStatus] = React.useState("");
   const navigate = useNavigate();
-  let token = localStorage.getItem("token");
+  let {token} = JSON.parse(localStorage.getItem("quiz"))
     React.useEffect(() => {
   axios({
     method: "get",

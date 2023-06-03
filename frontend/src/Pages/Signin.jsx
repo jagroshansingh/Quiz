@@ -23,9 +23,13 @@ export const Signin = () => {
         })
         .then(res=>{
             alert(res.data.msg)
+            let obj={
+              token:res.data.token,
+              player:res.data.player
+            }
             if(res.data.msg='Login Successful')
             {
-                localStorage.setItem('token',res.data.token)
+                localStorage.setItem('quiz',JSON.stringify(obj))
             }
         })
         .catch(err=>console.log(err))

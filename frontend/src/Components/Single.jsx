@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Container, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "./css/Single.module.css";
 
@@ -15,7 +15,13 @@ export const Single = ({ allq, handleOption, remember, current }) => {
         {allq[current].answerOptions.map((option, i) => (
           <Text
             key={i}
-            onClick={handleOption}
+            onClick={!remember[current] ? handleOption : undefined}
+            _hover={
+              !remember[current] && {
+                backgroundColor: "grey",
+                cursor: "pointer",
+              }
+            }
             bg={
               remember[current] &&
               remember[current] == allq[current].correctOption &&
@@ -32,6 +38,16 @@ export const Single = ({ allq, handleOption, remember, current }) => {
           </Text>
         ))}
       </Box>
+      <Container
+        className={styles.correctAnswer}
+        visibility={
+          remember[current] && remember[current] != allq[current].correctOption
+            ? "visible"
+            : "hidden"
+        }
+      >
+        <Text>Correct Answer: {allq[current].correctOption}</Text>
+      </Container>
     </div>
   );
 };
