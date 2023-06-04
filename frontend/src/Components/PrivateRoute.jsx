@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 export const PrivateRoute = ({ children }) => {
   const [status, setStatus] = React.useState("");
   const navigate = useNavigate();
-  let {token} = JSON.parse(localStorage.getItem("quiz"))
+  let ss = JSON.parse(sessionStorage.getItem("quiz"))
     React.useEffect(() => {
   axios({
     method: "get",
     url: `${process.env.REACT_APP_URL}/auth/verify`,
-    headers: { token },
+    headers: { token:ss?.token },
   })
     .then((res) => {
       setStatus(res.data);

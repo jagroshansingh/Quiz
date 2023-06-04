@@ -3,8 +3,10 @@ import { Admin } from './Admin'
 import { Box, Heading, Input } from '@chakra-ui/react'
 import styles from './css/Signup.module.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export const Signin = () => {
+  const navigate=useNavigate()
     let initial={
         email:"",
         password:""
@@ -25,11 +27,13 @@ export const Signin = () => {
             alert(res.data.msg)
             let obj={
               token:res.data.token,
-              player:res.data.player
+              player:res.data.player,
+              playerId:res.data.playerId
             }
             if(res.data.msg='Login Successful')
             {
-                localStorage.setItem('quiz',JSON.stringify(obj))
+                sessionStorage.setItem('quiz',JSON.stringify(obj))
+                navigate('/admin/dashboard')
             }
         })
         .catch(err=>console.log(err))

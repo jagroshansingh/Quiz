@@ -8,7 +8,11 @@ export const CreateQuizCard = ({details}) => {
     const {_id,creator,title,description,questionBank}=details
 
     const handleQuiz=()=>{
-        navigate(`/quiz/${_id}`)
+        let quiz=JSON.parse(sessionStorage.getItem('quiz'))
+        quiz.quizId=_id;
+        quiz.quizTitle=title;
+        sessionStorage.setItem('quiz',JSON.stringify(quiz))
+        navigate(`/quiz`)
     }
   return (
     <div>

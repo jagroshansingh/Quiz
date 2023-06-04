@@ -27,7 +27,13 @@ authRouter.post("/login",async(req,res)=>{
                 if(result)
                 {
                     const token=jwt.sign({course:'fswd'},'masai')
-                    res.send({msg:'Login Successful',token,player:pull[0]._id})
+                    let obj={
+                      msg:'Login Successful',
+                      token,
+                      player:pull[0].email,
+                      playerId:pull[0]._id
+                    }
+                    res.send(obj)
                 }
                 else res.send({msg:'Invalid Credentials!!!'})
             })

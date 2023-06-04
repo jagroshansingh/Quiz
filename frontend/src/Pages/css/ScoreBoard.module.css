@@ -1,0 +1,31 @@
+.scoreContainer{
+    border:0px solid;
+    width:30%;
+    margin:auto;
+    height: 90vh;
+    display: grid;
+    align-content: space-evenly;
+    text-align: center;
+}
+
+.scoreContainer>div{
+    border: 0px solid;
+    padding: 3% 0%;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.scoreContainer>div:hover{
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+}
+
+.scoreBoard{
+    background-color: aqua;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 5%;
+}

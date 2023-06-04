@@ -1,29 +1,31 @@
 import { Box, Button, Heading, Input, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
-import { useParams } from "react-router-dom";
 import styles from "./css/Quiz.module.css";
 import { Single } from "../Components/Single";
+import { useNavigate } from "react-router-dom";
 
 export const Quiz = () => {
-  const { id } = useParams();
+  const navigate=useNavigate()
   const [current, setCurrent] = React.useState(0);
   const [allquestions, setAllQuestions] = React.useState([]);
   const [remember, setRemember] = React.useState([]);
   const [score,setScore]=React.useState(0)
-  console.log(score)
-
 
   const handlePage = (e) => {
     if(e.target.innerText=='Submit')
     {
-      const {player}=JSON.parse(localStorage.getItem('quiz'))
+      const ss =JSON.parse(sessionStorage.getItem('quiz'))
       axios({
         method:'post',
         url:`${process.env.REACT_APP_URL}/score/push`,
-        data:{player,score}
+        data:{playerId:ss.playerId,quizId:ss.quizId,score}
       })
-      .then(res=>console.log(res.data))
+      .then(res=>{
+        ss.score=score
+        sessionStorage.setItem('quiz',JSON.stringify(ss))
+        navigate('/scoreBoard')
+      })
       .catch(err=>console.log(err))
     }
     else setCurrent((prev) => (e.target.innerText == "Next" ? prev + 1 : prev - 1));
@@ -37,10 +39,11 @@ export const Quiz = () => {
   };
 
   React.useEffect(() => {
+    let {quizId}=JSON.parse(sessionStorage.getItem('quiz'))
     axios({
       method: "get",
       url: `${process.env.REACT_APP_URL}/quiz/single`,
-      headers: { id },
+      headers: { id:quizId },
     })
       .then((res) => setAllQuestions(res.data[0].questionBank))
       .catch((err) => console.log(err));
