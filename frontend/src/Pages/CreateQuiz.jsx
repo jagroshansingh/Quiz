@@ -11,9 +11,9 @@ export const CreateQuiz = () => {
     // console.log(questionBank)
 
     let initialQuestion={
-        questionTitle:"",
-        answerOptions:[],
-        correctOption:""
+        question:"",
+        incorrect_answers:[],
+        correct_answer:""
     }
     const [question,setQuestion]=React.useState(initialQuestion)
     // console.log(question)
@@ -29,7 +29,7 @@ export const CreateQuiz = () => {
     }
 
     const handleQuestion=(q)=>{
-        if(q.target.name!='answerOptions') setQuestion({...question,[q.target.name]:q.target.value})
+        if(q.target.name!='incorrect_answers') setQuestion({...question,[q.target.name]:q.target.value})
         else
         {
             setQuestion({...question,[q.target.name]:q.target.value.split(",")})
@@ -54,18 +54,20 @@ export const CreateQuiz = () => {
         .catch(err=>console.log(err))
     }
 
+    let ss=JSON.parse(sessionStorage.getItem('quiz'))
+
   return (
     <div>
         <Box className={styles.formContainer}>
         <form action="">
-            <Input placeholder='Quiz Creator' defaultValue='temporary'></Input>
+            <Input placeholder='Quiz Creator' defaultValue={ss.player}></Input>
             <Input placeholder='Title' name='title' onChange={handleChange}></Input>
             <Input placeholder='Description' name='description' onChange={handleChange}></Input>
             <VStack className={styles.questionContainer}>
                 <Heading size={'md'}>Question no.{questionBank.length+1}</Heading>
-                <Input placeholder='Question Title' name='questionTitle' onChange={handleQuestion} value={question.questionTitle}></Input>
-                <Input placeholder='Answer Options' name='answerOptions' onChange={handleQuestion} value={question.answerOptions}></Input>
-                <Input placeholder='Correct Option' name='correctOption' onChange={handleQuestion} value={question.correctOption}></Input>
+                <Input placeholder='Question Title' name='question' onChange={handleQuestion} value={question.question}></Input>
+                <Input placeholder='Incorrect Options' name='incorrect_answers' onChange={handleQuestion} value={question.incorrect_answers}></Input>
+                <Input placeholder='Correct Option' name='correct_answer' onChange={handleQuestion} value={question.correct_answer}></Input>
                 <Button onClick={handleNextQuestion}>Next</Button>
             </VStack>
             <VStack>

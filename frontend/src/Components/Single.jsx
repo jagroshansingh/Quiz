@@ -3,16 +3,18 @@ import React from "react";
 import styles from "./css/Single.module.css";
 
 export const Single = ({ allq, handleOption, remember, current }) => {
+  const combine=[...allq[current].incorrect_answers,allq[current].correct_answer]
+  // console.log(combine)
   return (
     <div>
       <Box className={styles.optionsContainer}>
         <Box className={styles.questionContainer}>
           <Heading size={"md"}>
-            {current + 1 + ". " + allq[current].questionTitle}
+            {current + 1 + ". " + allq[current].question}
           </Heading>
           <Heading size={"sm"}>{current + 1 + " of " + allq.length}</Heading>
         </Box>
-        {allq[current].answerOptions.map((option, i) => (
+        {combine.sort().map((option, i) => (
           <Text
             key={i}
             onClick={!remember[current] ? handleOption : undefined}
@@ -24,11 +26,11 @@ export const Single = ({ allq, handleOption, remember, current }) => {
             }
             bg={
               remember[current] &&
-              remember[current] == allq[current].correctOption &&
+              remember[current] == allq[current].correct_answer &&
               remember[current] == option
                 ? "green"
                 : remember[current] &&
-                  remember[current] != allq[current].correctOption &&
+                  remember[current] != allq[current].correct_answer &&
                   remember[current] == option
                 ? "red"
                 : ""
@@ -41,12 +43,12 @@ export const Single = ({ allq, handleOption, remember, current }) => {
       <Container
         className={styles.correctAnswer}
         visibility={
-          remember[current] && remember[current] != allq[current].correctOption
+          remember[current] && remember[current] != allq[current].correct_answer
             ? "visible"
             : "hidden"
         }
       >
-        <Text>Correct Answer: {allq[current].correctOption}</Text>
+        <Text>Correct Answer: {allq[current].correct_answer}</Text>
       </Container>
     </div>
   );

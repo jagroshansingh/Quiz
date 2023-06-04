@@ -1,0 +1,15 @@
+.playContainer{
+    width:80%;
+    margin:auto;
+    border:0px solid;
+    height: 80vh;
+    display:grid;
+    align-content: center;
+}
+
+.setupContainer{
+    border:0px solid;
+    height: 150%;
+    display: grid;
+    text-align: center;
+}

@@ -4,6 +4,7 @@ import React from "react";
 import styles from "./css/Quiz.module.css";
 import { Single } from "../Components/Single";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Quiz = () => {
   const navigate=useNavigate()
@@ -11,15 +12,16 @@ export const Quiz = () => {
   const [allquestions, setAllQuestions] = React.useState([]);
   const [remember, setRemember] = React.useState([]);
   const [score,setScore]=React.useState(0)
+  const {quickQuestions}=useSelector((store)=>store)
 
   const handlePage = (e) => {
     if(e.target.innerText=='Submit')
     {
-      const ss =JSON.parse(sessionStorage.getItem('quiz'))
+      const ss =JSON.parse(sessionStorage.getItem('quiz'))||{}
       axios({
         method:'post',
         url:`${process.env.REACT_APP_URL}/score/push`,
-        data:{playerId:ss.playerId,quizId:ss.quizId,score}
+        data:{playerId:ss.playerId||'temp',quizId:ss.quizId||'random',score}
       })
       .then(res=>{
         ss.score=score
@@ -34,11 +36,14 @@ export const Quiz = () => {
   const handleOption = (e) => {
     
     setRemember([...remember, e.target.innerText]);
-    if(allquestions[current].correctOption==e.target.innerText) setScore((prev)=>prev+1)
+    if(allquestions[current].correct_answer==e.target.innerText) setScore((prev)=>prev+1)
     
   };
 
   React.useEffect(() => {
+    if(quickQuestions) setAllQuestions(quickQuestions)
+    else
+    {
     let {quizId}=JSON.parse(sessionStorage.getItem('quiz'))
     axios({
       method: "get",
@@ -47,6 +52,7 @@ export const Quiz = () => {
     })
       .then((res) => setAllQuestions(res.data[0].questionBank))
       .catch((err) => console.log(err));
+  }
   }, []);
 
   return (
