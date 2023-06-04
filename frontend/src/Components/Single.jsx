@@ -9,7 +9,7 @@ export const Single = ({ allq, handleOption, remember, current }) => {
     <div>
       <Box className={styles.optionsContainer}>
         <Box className={styles.questionContainer}>
-          <Heading size={"md"}>
+          <Heading size={"md"} w={'90%'}>
             {current + 1 + ". " + allq[current].question}
           </Heading>
           <Heading size={"sm"}>{current + 1 + " of " + allq.length}</Heading>

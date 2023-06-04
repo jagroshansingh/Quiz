@@ -4,7 +4,6 @@ import { Signup } from './Signup'
 import { Signin } from './Signin'
 import { Dashboard } from './Dashboard'
 import { Quiz } from './Quiz'
-import { Leaderboard } from './Leaderboard'
 import { Main } from './Main'
 import { Admin } from './Admin'
 import { CreateQuiz } from './CreateQuiz'
@@ -22,7 +21,6 @@ export const AllRoutes = () => {
             <Route path='/admin/signin' element={<Signin/>}></Route>
             <Route path='/admin/dashboard' element={<PrivateRoute><Dashboard/></PrivateRoute>}></Route>
             <Route path='/quiz' element={<Quiz/>}></Route>
-            <Route path='/admin/leaderboard' element={<Leaderboard/>}></Route>
             <Route path='/admin/createQuiz' element={<CreateQuiz/>}></Route>
             <Route path='/scoreBoard' element={<ScoreBoard/>}></Route>
             <Route path='/play' element={<Play/>}></Route>

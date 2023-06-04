@@ -16,11 +16,10 @@
     display: flex;
     border:0px solid;
     justify-content: space-between;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
 }
 
-.questionContainer>h2:last-child{
-    width: 70px;
+.questionContainer>h2{
     border:0px solid
 }
 

@@ -36,7 +36,7 @@ export const ScoreBoard = () => {
         <VStack shadow={"dark-lg"}>
           <Heading size={"md"}>Total Score: {ss.score * 10}</Heading>
           <Heading size={"md"}>
-            Score Percent: {Math.floor((ss.score / totalq) * 100)}%
+            Percentage: {Math.floor((ss.score / totalq) * 100)}%
           </Heading>
         </VStack>
       </Box>

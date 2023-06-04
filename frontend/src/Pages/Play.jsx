@@ -23,7 +23,6 @@ export const Play = () => {
   const handleStart=()=>{
     axios({
       method:'post',
-      url:'https://opentdb.com/api.php?amount=10&type=multiple',
       url:`https://opentdb.com/api.php?amount=10&category=${form.category}&difficulty=${form.difficulty}&type=multiple`,
     })
     .then(res=>{
