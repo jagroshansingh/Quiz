@@ -4,9 +4,10 @@ export const QuizContext = createContext();
 
 export const QuizContextProvider = ({ children }) => {
   const [quickQuestions, setQuickQuestions] = useState(null);
-//   console.log(quickQuestions)
+  const [quizTitle, setQuizTitle]=useState(null)
+    const [edit,setEdit]=useState(null)
   return (
-    <QuizContext.Provider value={{ quickQuestions, setQuickQuestions }}>
+    <QuizContext.Provider value={{ quickQuestions, setQuickQuestions, quizTitle, setQuizTitle, edit, setEdit }}>
       {children}
     </QuizContext.Provider>
   );

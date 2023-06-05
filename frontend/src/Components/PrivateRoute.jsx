@@ -17,6 +17,6 @@ export const PrivateRoute = ({ children }) => {
     })
     .catch((err) => console.log(err));
     }, []);
-  if (status == "not verified") navigate("/admin/signin");
+  if (status == "not verified") navigate("/signin");
   else if (status == "verified") return children;
 };

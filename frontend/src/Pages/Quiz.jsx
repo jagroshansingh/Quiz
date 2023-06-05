@@ -24,7 +24,7 @@ export const Quiz = () => {
         axios({
           method: "post",
           url: `${process.env.REACT_APP_URL}/score/push`,
-          data: { playerId: ss.playerId, quizId: ss.quizId, score },
+          data: { player: ss.player, quiz: ss.quizTitle, score },
         })
           .then((res) => {
             ss.score = score;

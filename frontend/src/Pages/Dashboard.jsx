@@ -22,7 +22,7 @@ export const Dashboard = () => {
     <div>
         <Admin/>
         <Box className={styles.createButton}>
-          <Button onClick={()=>navigate('/admin/createQuiz')}>Create Quiz</Button>
+          <Button onClick={()=>navigate('/createQuiz')}>Create Quiz</Button>
         </Box>
         <Box className={styles.cardContainer}>
           {data?.map((each)=><CreateQuizCard key={each._id} details={each}/>)}

@@ -1,29 +1,34 @@
 import { Box, Button, Heading, Input, VStack } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './css/CreateQuiz.module.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { QuizContext } from '../Contexts/QuizContext'
 
 export const CreateQuiz = () => {
+    const {edit}=useContext(QuizContext)
+    console.log(edit)
     const navigate=useNavigate()
     let initialBank=[]
     const [questionBank,setQuestionBank]=React.useState(initialBank)
-    // console.log(questionBank)
+    console.log(questionBank)
+    let ss=JSON.parse(sessionStorage.getItem('quiz'))
 
     let initialQuestion={
-        question:"",
-        incorrect_answers:[],
-        correct_answer:""
+        question:edit?.questionBank[questionBank.length]?.question||"",
+        incorrect_answers:edit?.questionBank[questionBank.length].incorrect_answers||[],
+        correct_answer:edit?.questionBank[questionBank.length].correct_answer||""
     }
     const [question,setQuestion]=React.useState(initialQuestion)
-    // console.log(question)
+    console.log(question)
 
     let initialDetails={
-        creator:"temporary",
-        title:"",
-        description:"",
+        creator:ss.player,
+        title:edit?.title||"",
+        description:edit?.description||"",
     }
     const [details,setDetails]=React.useState(initialDetails)
+    // console.log(details)
     const handleChange=(e)=>{
         setDetails({...details,[e.target.name]:e.target.value})
     }
@@ -49,25 +54,23 @@ export const CreateQuiz = () => {
         })
         .then(res=>{
             alert(res.data)
-            navigate('/admin/dashboard')
+            navigate('/dashboard')
         })
         .catch(err=>console.log(err))
     }
-
-    let ss=JSON.parse(sessionStorage.getItem('quiz'))
 
   return (
     <div>
         <Box className={styles.formContainer}>
         <form action="">
             <Input placeholder='Quiz Creator' defaultValue={ss.player}></Input>
-            <Input placeholder='Title' name='title' onChange={handleChange}></Input>
-            <Input placeholder='Description' name='description' onChange={handleChange}></Input>
+            <Input placeholder='Title' name='title' onChange={handleChange} defaultValue={edit?.title||""}></Input>
+            <Input placeholder='Description' name='description' onChange={handleChange} defaultValue={edit?.description||""}></Input>
             <VStack className={styles.questionContainer}>
                 <Heading size={'md'}>Question no.{questionBank.length+1}</Heading>
-                <Input placeholder='Question Title' name='question' onChange={handleQuestion} value={question.question}></Input>
-                <Input placeholder='Incorrect Options' name='incorrect_answers' onChange={handleQuestion} value={question.incorrect_answers}></Input>
-                <Input placeholder='Correct Option' name='correct_answer' onChange={handleQuestion} value={question.correct_answer}></Input>
+                <Input placeholder='Question Title' name='question' onChange={handleQuestion} value={edit?.questionBank[questionBank.length]?.question||question.question}></Input>
+                <Input placeholder='Incorrect Options' name='incorrect_answers' onChange={handleQuestion} value={edit?.questionBank[questionBank.length]?.incorrect_answers||question.incorrect_answers}></Input>
+                <Input placeholder='Correct Option' name='correct_answer' onChange={handleQuestion} value={edit?.questionBank[questionBank.length]?.correct_answer||question.correct_answer}></Input>
                 <Button onClick={handleNextQuestion}>Next</Button>
             </VStack>
             <VStack>

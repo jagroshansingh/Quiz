@@ -9,7 +9,7 @@ export const Main = () => {
     <div>
       <Box className={styles.container}>
         <Button onClick={()=>navigate('/play')}>Quick Play</Button>
-        <Button onClick={()=>navigate('/admin/signin')}>Custom Play</Button>
+        <Button onClick={()=>navigate('/dashboard')}>Custom Play</Button>
       </Box>
     </div>
   );

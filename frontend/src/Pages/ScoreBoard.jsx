@@ -51,7 +51,7 @@ export const ScoreBoard = () => {
         <Button
           colorScheme="messenger"
           variant="outline"
-          onClick={() => navigate(quickQuestions?"/play":"/admin/dashboard")}
+          onClick={() => navigate(quickQuestions?"/play":"/dashboard")}
         >
           {quickQuestions?'Play Again':'Dashboard'}
         </Button>

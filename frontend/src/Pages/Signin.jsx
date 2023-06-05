@@ -33,7 +33,7 @@ export const Signin = () => {
             if(res.data.msg='Login Successful')
             {
                 sessionStorage.setItem('quiz',JSON.stringify(obj))
-                navigate('/admin/dashboard')
+                navigate('/dashboard')
             }
         })
         .catch(err=>console.log(err))

@@ -6,10 +6,10 @@ import styles from './css/Admin.module.css'
 export const Admin = () => {
   return (
     <div>
-        <Box className={styles.container}>
-            <Link to={'/admin/signup'}>SignUp</Link>
-            <Link to={'/admin/signin'}>SignIn</Link>
-            <Link to={'/admin/dashboard'}>DashBoard</Link>
+        <Box className={styles.container} boxShadow={'lg'}>
+            <Link to={'/signup'}>SignUp</Link>
+            <Link to={'/signin'}>SignIn</Link>
+            <Link to={'/dashboard'}>DashBoard</Link>
         </Box>
     </div>
   )
