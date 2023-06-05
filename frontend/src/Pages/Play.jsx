@@ -1,13 +1,13 @@
 import { Box, Button, Container, Heading, Input, Select, VStack } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./css/Play.module.css"
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuickQuestions } from "../Redux/action";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { QuizContext } from "../Contexts/QuizContext";
 
 export const Play = () => {
-  const dispatch=useDispatch()
+  const {setQuickQuestions}=useContext(QuizContext)
   const navigate=useNavigate()
   let initial={
     // name:"",
@@ -26,8 +26,8 @@ export const Play = () => {
       url:`https://opentdb.com/api.php?amount=10&category=${form.category}&difficulty=${form.difficulty}&type=multiple`,
     })
     .then(res=>{
-      console.log(res.data.results)
-      dispatch(getQuickQuestions(res.data.results))
+      // console.log(res.data.results)
+      setQuickQuestions(res.data.results)
       navigate('/quiz')
     })
     .catch(err=>console.log(err))

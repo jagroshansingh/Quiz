@@ -1,18 +1,18 @@
 import { Box, Button, Heading, Input, Text } from "@chakra-ui/react";
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./css/Quiz.module.css";
 import { Single } from "../Components/Single";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { QuizContext } from "../Contexts/QuizContext";
 
 export const Quiz = () => {
   const navigate = useNavigate();
+  const {quickQuestions}=useContext(QuizContext)
   const [current, setCurrent] = React.useState(0);
   const [allquestions, setAllQuestions] = React.useState([]);
   const [remember, setRemember] = React.useState([]);
   const [score, setScore] = React.useState(0);
-  const { quickQuestions } = useSelector((store) => store);
 
   const handlePage = (e) => {
     if (e.target.innerText == "Submit") {

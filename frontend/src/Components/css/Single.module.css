@@ -23,6 +23,11 @@
     border:0px solid
 }
 
+.questionContainer>h2:last-child{
+    border:0px solid;
+    width: 65px
+}
+
 .correctAnswer{
     border:0px solid;
     text-align: center;

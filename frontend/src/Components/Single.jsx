@@ -9,10 +9,10 @@ export const Single = ({ allq, handleOption, remember, current }) => {
     <div>
       <Box className={styles.optionsContainer}>
         <Box className={styles.questionContainer}>
-          <Heading size={"md"} w={'90%'}>
+          <Heading size={"md"} w={'80%'}>
             {current + 1 + ". " + allq[current].question}
           </Heading>
-          <Heading size={"sm"}>{current + 1 + " of " + allq.length}</Heading>
+          <Heading size={"sm"} >{current + 1 + " of " + allq.length}</Heading>
         </Box>
         {combine.sort().map((option, i) => (
           <Text

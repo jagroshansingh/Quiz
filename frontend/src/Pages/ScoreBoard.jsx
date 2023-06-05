@@ -1,12 +1,12 @@
-import { Box, Button, Container, Heading, VStack } from "@chakra-ui/react";
+import { Box, Button, Heading, VStack } from "@chakra-ui/react";
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./css/ScoreBoard.module.css";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { QuizContext } from "../Contexts/QuizContext";
 
 export const ScoreBoard = () => {
-  const { quickQuestions } = useSelector((store) => store);
+  const {quickQuestions}=useContext(QuizContext)
   const navigate = useNavigate();
   const [totalq, setTotalq] = React.useState(null);
   let ss = JSON.parse(sessionStorage.getItem("quiz"));
@@ -44,16 +44,16 @@ export const ScoreBoard = () => {
         <Button
           colorScheme="messenger"
           variant="outline"
-          onClick={() => navigate("/admin/dashboard")}
+          onClick={() => navigate("/")}
         >
-          Dashboard
+          Home
         </Button>
         <Button
           colorScheme="messenger"
           variant="outline"
-          onClick={() => navigate("/")}
+          onClick={() => navigate(quickQuestions?"/play":"/admin/dashboard")}
         >
-          Exit
+          {quickQuestions?'Play Again':'Dashboard'}
         </Button>
       </Box>
     </div>
