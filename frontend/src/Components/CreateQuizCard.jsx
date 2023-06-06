@@ -3,8 +3,9 @@ import React, { useContext } from "react";
 import styles from "./css/CreateQuizCard.module.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import { QuizContext } from "../Contexts/QuizContext";
+import axios from "axios";
 
-export const CreateQuizCard = ({ details }) => {
+export const CreateQuizCard = ({ index,details,handleDelete }) => {
   const { setQuizTitle, setEdit } = useContext(QuizContext);
   const navigate = useNavigate();
   const { _id, creator, title, description, questionBank } = details;
@@ -27,10 +28,6 @@ export const CreateQuizCard = ({ details }) => {
     navigate('/createQuiz')
   }
 
-  const handleDelete=()=>{
-
-  }
-
   let ss = JSON.parse(sessionStorage.getItem("quiz"));
   return (
     <div>
@@ -42,10 +39,13 @@ export const CreateQuizCard = ({ details }) => {
 
         {ss.player == creator ? (
           <Box className={styles.buttonContainer}>
+            <Button size={"sm"} onClick={handleQuiz}>
+              Take Quiz
+            </Button>
             <Button size={"sm"} colorScheme="blue" onClick={handleEdit}>
               Edit
             </Button>
-            <Button size={"sm"} colorScheme="red" onClick={handleDelete}>
+            <Button size={"sm"} colorScheme="red" onClick={()=>handleDelete(index)}>
               Delete
             </Button>
           </Box>

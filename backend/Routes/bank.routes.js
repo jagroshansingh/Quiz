@@ -29,4 +29,22 @@ bankRouter.get('/single',async(req,res)=>{
     }
 })
 
+bankRouter.put('/update',async(req,res)=>{
+    try {
+        await bankModel.findByIdAndUpdate(req.headers.quizid,req.body)
+        res.send('updated successfully')
+    } catch (error) {
+        res.send(error)
+    }
+})
+
+bankRouter.delete('/delete',async(req,res)=>{
+    try {
+        let see=await bankModel.findByIdAndDelete(req.headers.quizid)
+        res.send('quiz successfully deleted')
+    } catch (error) {
+        res.send(error)
+    }
+})
+
 module.exports={bankRouter}
