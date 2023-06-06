@@ -1,12 +1,13 @@
 import React from 'react'
 import { Admin } from './Admin'
-import { Box, Button } from '@chakra-ui/react'
+import { Box, Button, useToast } from '@chakra-ui/react'
 import styles from './css/Dashboard.module.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { CreateQuizCard } from '../Components/CreateQuizCard'
 
 export const Dashboard = () => {
+  const toast=useToast()
   const navigate=useNavigate()
   const [data,setData]=React.useState()
 
@@ -26,8 +27,12 @@ export const Dashboard = () => {
       headers:{quizId:data[index]._id}
     })
     .then(res=>{
-      alert(res.data)
       FetchAllQuizes()
+      toast({
+        title: res.data,
+        status: "success",
+        duration: 2000,
+      });
     })
     .catch(err=>console.log(err))
   }
@@ -36,10 +41,10 @@ export const Dashboard = () => {
     FetchAllQuizes()
   },[])
   return (
-    <div>
+    <div className={styles.dashboard}>
         <Admin/>
         <Box className={styles.createButton}>
-          <Button onClick={()=>navigate('/createQuiz')}>Create Quiz</Button>
+          <Button colorScheme='blue' onClick={()=>navigate('/createQuiz')}>Create Quiz</Button>
         </Box>
         <Box className={styles.cardContainer}>
           {data?.map((each,index)=><CreateQuizCard key={each._id} index={index} details={each} handleDelete={handleDelete}/>)}

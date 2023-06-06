@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 export const Main = () => {
     const navigate=useNavigate()
   return (
-    <div>
+    <div className={styles.mainBody}>
       <Box className={styles.container}>
-        <Button onClick={()=>navigate('/play')}>Quick Play</Button>
-        <Button onClick={()=>navigate('/dashboard')}>Custom Play</Button>
+        <Button size={'lg'} onClick={()=>navigate('/play')}>Quick Play</Button>
+        <Button size={'lg'} onClick={()=>navigate('/dashboard')}>Custom Play</Button>
       </Box>
     </div>
   );

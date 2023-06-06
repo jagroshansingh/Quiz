@@ -9,5 +9,10 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     text-align: center;
-    gap:1%
+    gap:1%;
+    row-gap: 3%;
+}
+
+.dashboard{
+    padding: 0% 1%;
 }

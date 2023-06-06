@@ -6,6 +6,7 @@ import {
   Heading,
   Input,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import styles from "./css/CreateQuiz.module.css";
@@ -15,6 +16,7 @@ import { QuizContext } from "../Contexts/QuizContext";
 
 export const CreateQuiz = () => {
   const { edit } = useContext(QuizContext);
+  const toast = useToast();
   const navigate = useNavigate();
   let initialBank = [];
   const [questionBank, setQuestionBank] = React.useState(initialBank);
@@ -49,24 +51,59 @@ export const CreateQuiz = () => {
   };
 
   const handleNextQuestion = () => {
-    setQuestionBank([...questionBank, question]);
+    let flag = false;
+    for (let key in question) {
+      if (!question[key].length) {
+        flag = true;
+        break;
+      }
+    }
+    if (!flag) setQuestionBank([...questionBank, question]);
+    else
+      toast({
+        title: "Empty Fields!",
+        status: "warning",
+        duration: 2000,
+        position: "top",
+      });
   };
 
   const handleCreate = () => {
-    axios({
-      method: "post",
-      url: `${process.env.REACT_APP_URL}/quiz/create`,
-      data: { ...details, questionBank },
-    })
-      .then((res) => {
-        alert(res.data);
-        navigate("/dashboard");
+    let flag = false;
+    for (let key in details) {
+      if (!details[key].length) {
+        flag = true;
+        break;
+      }
+    }
+    if (!flag) {
+      axios({
+        method: "post",
+        url: `${process.env.REACT_APP_URL}/quiz/create`,
+        data: { ...details, questionBank },
       })
-      .catch((err) => console.log(err));
+        .then((res) => {
+          navigate("/dashboard");
+          toast({
+            title: res.data,
+            status:"success",
+            duration: 2000,
+          });
+        })
+        .catch((err) => console.log(err));
+    } else toast({
+        title: "Empty Fields!",
+        status: "warning",
+        duration: 2000,
+        position: "top",
+      });
   };
 
   const handleEdit = () => {
-    let bigger=edit.questionBank.length>questionBank.length?edit.questionBank:questionBank
+    let bigger =
+      edit.questionBank.length > questionBank.length
+        ? edit.questionBank
+        : questionBank;
     let collect = bigger.map((each, i) =>
       questionBank[i] ? questionBank[i] : edit.questionBank[i]
     );
@@ -74,12 +111,12 @@ export const CreateQuiz = () => {
     axios({
       method: "put",
       url: `${process.env.REACT_APP_URL}/quiz/update`,
-      data: {...details,questionBank:collect},
+      data: { ...details, questionBank: collect },
       headers: { quizId: edit._id },
     })
-      .then((res) =>{
-        navigate('/dashboard')
-        alert(res.data)
+      .then((res) => {
+        navigate("/dashboard");
+        alert(res.data);
       })
       .catch((err) => console.log(err));
   };

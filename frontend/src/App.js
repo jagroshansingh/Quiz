@@ -4,7 +4,7 @@ import { AllRoutes } from "./Pages/AllRoutes";
 
 function App() {
   return (
-    <div>
+    <div className='AppContainer'>
       <AllRoutes/>
     </div>
   );

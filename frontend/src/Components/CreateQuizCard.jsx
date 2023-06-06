@@ -1,9 +1,8 @@
-import { Box, Button, HStack, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import styles from "./css/CreateQuizCard.module.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { QuizContext } from "../Contexts/QuizContext";
-import axios from "axios";
 
 export const CreateQuizCard = ({ index,details,handleDelete }) => {
   const { setQuizTitle, setEdit } = useContext(QuizContext);
@@ -31,7 +30,7 @@ export const CreateQuizCard = ({ index,details,handleDelete }) => {
   let ss = JSON.parse(sessionStorage.getItem("quiz"));
   return (
     <div>
-      <Box className={styles.cardContainer}>
+      <VStack className={styles.cardContainer} boxShadow={'outline'}>
         <Heading size={"md"}>{title}</Heading>
         <Text>{description}</Text>
         <Text>Created By: {creator}</Text>
@@ -39,7 +38,7 @@ export const CreateQuizCard = ({ index,details,handleDelete }) => {
 
         {ss.player == creator ? (
           <Box className={styles.buttonContainer}>
-            <Button size={"sm"} onClick={handleQuiz}>
+            <Button size={"sm"} colorScheme="teal" onClick={handleQuiz}>
               Take Quiz
             </Button>
             <Button size={"sm"} colorScheme="blue" onClick={handleEdit}>
@@ -51,7 +50,7 @@ export const CreateQuizCard = ({ index,details,handleDelete }) => {
           </Box>
         ) : (
           <Box className={styles.buttonContainer}>
-            <Button size={"sm"} onClick={handleQuiz}>
+            <Button colorScheme="teal" size={"sm"} onClick={handleQuiz}>
               Take Quiz
             </Button>
             <Button size={"sm"} onClick={handleLeaderBoard}>
@@ -59,7 +58,7 @@ export const CreateQuizCard = ({ index,details,handleDelete }) => {
             </Button>
           </Box>
         )}
-      </Box>
+      </VStack>
     </div>
   );
 };
