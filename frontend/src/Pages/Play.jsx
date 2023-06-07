@@ -1,8 +1,7 @@
-import { Box, Button, Container, Heading, Input, Select, VStack } from "@chakra-ui/react";
+import { Box, Button, Heading, Select } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import styles from "./css/Play.module.css"
 import axios from "axios";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { QuizContext } from "../Contexts/QuizContext";
 
@@ -10,7 +9,6 @@ export const Play = () => {
   const {setQuickQuestions}=useContext(QuizContext)
   const navigate=useNavigate()
   let initial={
-    // name:"",
     category:"",
     difficulty:"",
   }
@@ -27,6 +25,9 @@ export const Play = () => {
     })
     .then(res=>{
       setQuickQuestions(res.data.results)
+      let ss=JSON.parse(sessionStorage.getItem('quiz'))||{}
+      ss.quickQuestions=res.data.results
+      sessionStorage.setItem('quiz',JSON.stringify(ss))
       navigate('/quiz')
     })
     .catch(err=>console.log(err))
@@ -35,7 +36,6 @@ export const Play = () => {
     <div className={styles.playContainer}>
       <Box className={styles.setupContainer}>
         <Heading>Set up your Quiz</Heading>
-        {/* <Input placeholder="Enter Your Name" name="name" onChange={handleChange}></Input> */}
         <Select placeholder="Select Category" name="category" onChange={handleChange}>
           <option value="9">General Knowledge</option>
           <option value="10">Entertainment: Books</option>

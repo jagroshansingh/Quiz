@@ -8,31 +8,28 @@ import { QuizContext } from "../Contexts/QuizContext";
 
 export const Quiz = () => {
   const navigate = useNavigate();
-  const {quickQuestions}=useContext(QuizContext)
   const [current, setCurrent] = React.useState(0);
   const [allquestions, setAllQuestions] = React.useState([]);
   const [remember, setRemember] = React.useState([]);
   const [score, setScore] = React.useState(0);
 
+  const ss = JSON.parse(sessionStorage.getItem("quiz"));
+
   const handlePage = (e) => {
     if (e.target.innerText == "Submit") {
-      if (quickQuestions) {
-        sessionStorage.setItem("quiz", JSON.stringify({ score }));
-        navigate("/scoreBoard");
-      } else {
-        const ss = JSON.parse(sessionStorage.getItem("quiz"));
+      if (!ss.quickQuestions) 
+      {
         axios({
           method: "post",
           url: `${process.env.REACT_APP_URL}/score/push`,
           data: { player: ss.player, quiz: ss.quizTitle, score },
         })
-          .then((res) => {
-            ss.score = score;
-            sessionStorage.setItem("quiz", JSON.stringify(ss));
-            navigate("/scoreBoard");
-          })
+          .then((res) => {})
           .catch((err) => console.log(err));
       }
+      ss.score = score;
+      sessionStorage.setItem("quiz", JSON.stringify(ss));
+      navigate("/scoreBoard");
     } else
       setCurrent((prev) =>
         e.target.innerText == "Next" ? prev + 1 : prev - 1
@@ -46,13 +43,12 @@ export const Quiz = () => {
   };
 
   React.useEffect(() => {
-    if (quickQuestions) setAllQuestions(quickQuestions);
+    if (ss.quickQuestions) setAllQuestions(ss.quickQuestions);
     else {
-      let { quizId } = JSON.parse(sessionStorage.getItem("quiz"));
       axios({
         method: "get",
         url: `${process.env.REACT_APP_URL}/quiz/single`,
-        headers: { id: quizId },
+        headers: { id: ss.quizId },
       })
         .then((res) => setAllQuestions(res.data[0].questionBank))
         .catch((err) => console.log(err));
