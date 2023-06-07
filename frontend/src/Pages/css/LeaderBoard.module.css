@@ -1,8 +1,20 @@
 .noData{
     border: 0px solid;
+    width: 100%;
     position: absolute;
-    top:15%;
-    left:40%;
+    top:25%;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
 
+.backContainer{
+    border: 0px solid;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.wholeBody{
+    background-color:rgb(186, 195, 204);
 }

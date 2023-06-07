@@ -9,8 +9,8 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
     text-align: center;
-    gap:1%;
-    row-gap: 3%;
+    /* gap:1%; */
+    /* row-gap: 3%; */
 }
 
 .dashboard{
@@ -27,6 +27,6 @@
 @media screen and (max-width:400px){
     .cardContainer{
         grid-template-columns: repeat(1,1fr);
-        padding: 0% 5%;
+        padding: 0% 3%;
     }
 }

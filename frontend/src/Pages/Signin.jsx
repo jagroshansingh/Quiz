@@ -45,7 +45,6 @@ export const Signin = () => {
     }
   return (
     <div className={styles.wholePage}>
-      {/* <Admin /> */}
       <Box className={styles.container}>
         <Heading>Login</Heading>
         <form action="" onSubmit={handleSubmit}>
@@ -53,7 +52,7 @@ export const Signin = () => {
             <Input type='password' placeholder='Password' onChange={handleChange}/>
             <Input type='submit'/>
         </form>
-        <Box>Already registered? <Box color={'blue'} textDecoration={'underline'}><Link to={'/signup'}>Sign-up</Link></Box></Box>
+        <Box>Not registered? <Box color={'blue'} textDecoration={'underline'}><Link to={'/signup'}>Sign-up</Link></Box></Box>
       </Box>
     </div>
   )

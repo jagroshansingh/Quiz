@@ -34,7 +34,12 @@ export const Signup = () => {
       data: credential,
     })
       .then((res) => {
-        alert(res.data.msg);
+        toast({
+          title:res.data.msg,
+          status:res.data.msg=='Email already registered'?'warning':'success',
+          duration:2000,
+          position:'top'
+        })
         let obj = {
           token: res.data.token,
           player: res.data.player,
@@ -51,6 +56,7 @@ export const Signup = () => {
       title: "Empty Fields!",
       status: "warning",
       duration: 2000,
+      position:'top'
     });
   };
   return (
@@ -66,7 +72,7 @@ export const Signup = () => {
           />
           <Input type="submit" />
         </form>
-        <Box>Not registered? <Box color={'blue'} textDecoration={'underline'}><Link to={'/signin'}>Sign-in</Link></Box></Box>
+        <Box>Already registered? <Box color={'blue'} textDecoration={'underline'}><Link to={'/signin'}>Login</Link></Box></Box>
       </Box>
     </div>
   );

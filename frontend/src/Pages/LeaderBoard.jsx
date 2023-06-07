@@ -12,13 +12,16 @@ import {
   Text,
   Center,
   Box,
+  Button,
 } from "@chakra-ui/react";
 import { Admin } from "./Admin";
 import { QuizContext } from "../Contexts/QuizContext";
 import axios from "axios";
 import styles from "./css/LeaderBoard.module.css"
+import { useNavigate } from "react-router-dom";
 
 export const LeaderBoard = () => {
+  const navigate=useNavigate()
   const { quizTitle } = React.useContext(QuizContext);
   const [list, setList] = React.useState([]);
 
@@ -32,10 +35,10 @@ export const LeaderBoard = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div>
+    <div className={styles.wholeBody}>
       <Admin />
-      <TableContainer p={"0% 1%"}>
-        <Table variant="striped" colorScheme="teal">
+      <TableContainer p={"20px 0px"}>
+        <Table variant="striped" colorScheme="teal" size={{base:'sm',md:'md'}}>
           <Thead>
             <Tr>
               <Th>Rank</Th>
@@ -62,6 +65,9 @@ export const LeaderBoard = () => {
           </Tbody>
         </Table>
       </TableContainer>
+      <Box className={styles.backContainer}>
+        <Button colorScheme="blue" onClick={()=>navigate('/dashboard')}>Back</Button>
+      </Box>
     </div>
   );
 };

@@ -4,10 +4,6 @@ import styles from "./css/CreateQuizCard.module.css";
 import {useNavigate } from "react-router-dom";
 import { QuizContext } from "../Contexts/QuizContext";
 
-// let buttonSize={
-//   base:'xs',
-//   sm:'sm',
-// }
 
 export const CreateQuizCard = ({ index,details,handleDelete }) => {
   const { setQuizTitle, setEdit } = useContext(QuizContext);

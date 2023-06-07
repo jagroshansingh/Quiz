@@ -26,7 +26,6 @@ export const Play = () => {
       url:`https://opentdb.com/api.php?amount=10&category=${form.category}&difficulty=${form.difficulty}&type=multiple`,
     })
     .then(res=>{
-      // console.log(res.data.results)
       setQuickQuestions(res.data.results)
       navigate('/quiz')
     })

@@ -3,6 +3,7 @@ import {
   Button,
   FormControl,
   FormLabel,
+  HStack,
   Heading,
   Input,
   VStack,
@@ -88,6 +89,7 @@ export const CreateQuiz = () => {
             title: res.data,
             status:"success",
             duration: 2000,
+            position:'top'
           });
         })
         .catch((err) => console.log(err));
@@ -116,7 +118,12 @@ export const CreateQuiz = () => {
     })
       .then((res) => {
         navigate("/dashboard");
-        alert(res.data);
+        toast({
+          title:res.data,
+          status:"success",
+          duration:2000,
+          position:'top'
+        })
       })
       .catch((err) => console.log(err));
   };
@@ -126,7 +133,7 @@ export const CreateQuiz = () => {
   }, [questionBank]);
 
   return (
-    <div>
+    <div className={styles.wholeBody}>
       <Box className={styles.formContainer}>
         <form action="">
           <VStack>
@@ -143,6 +150,7 @@ export const CreateQuiz = () => {
               <Input
                 placeholder="Enter Quiz Title"
                 name="title"
+                maxLength={'15'}
                 onChange={handleChange}
                 defaultValue={edit?.title || ""}
               ></Input>
@@ -152,6 +160,7 @@ export const CreateQuiz = () => {
               <Input
                 placeholder="Enter Quiz Description"
                 name="description"
+                maxLength={'25'}
                 onChange={handleChange}
                 defaultValue={edit?.description || ""}
               ></Input>
@@ -188,17 +197,18 @@ export const CreateQuiz = () => {
             </FormControl>
             <Button onClick={handleNextQuestion}>Next</Button>
           </VStack>
-          <VStack>
+          <Box className={styles.buttonContainer}>
+          <Button onClick={()=>navigate('/dashboard')}>CANCEL</Button>
             {edit ? (
               <Button colorScheme="blue" onClick={handleEdit}>
-                Submit
+                SUBMIT
               </Button>
             ) : (
               <Button colorScheme="blue" onClick={handleCreate}>
-                Create Quiz
+                CREATE
               </Button>
             )}
-          </VStack>
+          </Box>
         </form>
       </Box>
     </div>

@@ -9,3 +9,12 @@
     border:1px solid;
     margin:2% 0%;
 }
+
+.wholeBody{
+    background-color:rgb(186, 195, 204);
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: space-around;
+}
