@@ -1,6 +1,31 @@
 .container{
     text-align: center;
-    width: 70%;
+    width: 50%;
     margin: auto;
-    margin-top: 3%;
+    border: 0px solid;
+    display: grid;
+    gap: 15%;
+}
+
+.wholePage{
+    border: 0px solid;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: grid;
+    gap:5%
+}
+
+form>input:last-child{
+    background-color:teal;
+}
+
+@media screen and (max-width:500px){
+    .container{
+        width: 95%;
+    }
 }

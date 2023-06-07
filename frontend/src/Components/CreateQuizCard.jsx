@@ -4,6 +4,11 @@ import styles from "./css/CreateQuizCard.module.css";
 import {useNavigate } from "react-router-dom";
 import { QuizContext } from "../Contexts/QuizContext";
 
+// let buttonSize={
+//   base:'xs',
+//   sm:'sm',
+// }
+
 export const CreateQuizCard = ({ index,details,handleDelete }) => {
   const { setQuizTitle, setEdit } = useContext(QuizContext);
   const navigate = useNavigate();
@@ -38,22 +43,22 @@ export const CreateQuizCard = ({ index,details,handleDelete }) => {
 
         {ss.player == creator ? (
           <Box className={styles.buttonContainer}>
-            <Button size={"sm"} colorScheme="teal" onClick={handleQuiz}>
+            <Button size={'sm'} colorScheme="teal" onClick={handleQuiz}>
               Take Quiz
             </Button>
-            <Button size={"sm"} colorScheme="blue" onClick={handleEdit}>
+            <Button size={'sm'} colorScheme="blue" onClick={handleEdit}>
               Edit
             </Button>
-            <Button size={"sm"} colorScheme="red" onClick={()=>handleDelete(index)}>
+            <Button size={'sm'} colorScheme="red" onClick={()=>handleDelete(index)}>
               Delete
             </Button>
           </Box>
         ) : (
           <Box className={styles.buttonContainer}>
-            <Button colorScheme="teal" size={"sm"} onClick={handleQuiz}>
+            <Button colorScheme="teal" size={'sm'} onClick={handleQuiz}>
               Take Quiz
             </Button>
-            <Button size={"sm"} onClick={handleLeaderBoard}>
+            <Button size={'sm'} onClick={handleLeaderBoard}>
               LeaderBoard
             </Button>
           </Box>

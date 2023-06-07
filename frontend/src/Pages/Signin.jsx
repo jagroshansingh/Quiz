@@ -1,9 +1,8 @@
 import React from 'react'
-import { Admin } from './Admin'
 import { Box, Heading, Input } from '@chakra-ui/react'
 import styles from './css/Signup.module.css'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Signin = () => {
   const navigate=useNavigate()
@@ -39,8 +38,8 @@ export const Signin = () => {
         .catch(err=>console.log(err))
     }
   return (
-    <div>
-      <Admin />
+    <div className={styles.wholePage}>
+      {/* <Admin /> */}
       <Box className={styles.container}>
         <Heading>Login</Heading>
         <form action="" onSubmit={handleSubmit}>
@@ -48,6 +47,7 @@ export const Signin = () => {
             <Input type='password' placeholder='Password' onChange={handleChange}/>
             <Input type='submit'/>
         </form>
+        <Box>Already registered? <Box color={'blue'} textDecoration={'underline'}><Link to={'/signup'}>Sign-up</Link></Box></Box>
       </Box>
     </div>
   )

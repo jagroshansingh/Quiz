@@ -1,9 +1,8 @@
 import React from "react";
-import { Admin } from "./Admin";
 import { Box, Heading, Input, useToast } from "@chakra-ui/react";
 import styles from "./css/Signup.module.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const toast = useToast();
@@ -55,8 +54,7 @@ export const Signup = () => {
     });
   };
   return (
-    <div>
-      <Admin />
+    <div className={styles.wholePage}>
       <Box className={styles.container}>
         <Heading>Sign-up</Heading>
         <form action="" onSubmit={handleSubmit}>
@@ -68,6 +66,7 @@ export const Signup = () => {
           />
           <Input type="submit" />
         </form>
+        <Box>Not registered? <Box color={'blue'} textDecoration={'underline'}><Link to={'/signin'}>Sign-in</Link></Box></Box>
       </Box>
     </div>
   );

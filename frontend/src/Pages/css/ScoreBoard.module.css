@@ -29,3 +29,10 @@
     justify-content: space-around;
     padding-bottom: 5%;
 }
+
+@media screen and (max-width:500px){
+    .scoreContainer{
+        width: 80%;
+    }
+    
+}

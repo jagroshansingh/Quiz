@@ -25,11 +25,26 @@
 
 .questionContainer>h2:last-child{
     border:0px solid;
-    width: 65px
+    width: 65px;
+}
+
+.questionContainer>h2:first-child{
+    width: 80%;
+    border: 0px solid;
 }
 
 .correctAnswer{
     border:0px solid;
     text-align: center;
     margin-top: 3%;
+}
+
+@media screen and (max-width:500px){
+    .questionContainer>h2:last-child{
+        display: none;
+    }
+
+    .questionContainer>h2:first-child{
+        width: 100%;
+    }
 }

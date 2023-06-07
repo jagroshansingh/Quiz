@@ -13,3 +13,9 @@
     display: grid;
     text-align: center;
 }
+
+@media screen and (max-width:500px){
+    .playContainer{
+        width: 95%;
+    }
+}

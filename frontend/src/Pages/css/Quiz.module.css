@@ -19,3 +19,9 @@
     background-color: teal;
     color:white
 }
+
+@media screen and (max-width:500px){
+    .quizContainer{
+        width: 100%;
+    }
+}
