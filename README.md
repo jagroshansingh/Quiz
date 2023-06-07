@@ -10,6 +10,9 @@ A Quiz Game Application.
   <li>LeaderBoard for each quizes</li>
 </ul>
 
+# App Logo
+<img src="https://github.com/jagroshansingh/Quiz/blob/master/frontend/public/BrainBurst_Logo.png?raw=true"/>
+
 # Tech-functionality
 <ol>
   <li>Bycrypt: Used for Hashing the password at Backend</li>
