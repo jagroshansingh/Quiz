@@ -11,6 +11,7 @@ import { PrivateRoute } from '../Components/PrivateRoute'
 import { ScoreBoard } from './ScoreBoard'
 import { Play } from './Play'
 import { LeaderBoard } from './LeaderBoard'
+import { PageNotFound } from './PageNotFound'
 
 export const AllRoutes = () => {
   return (
@@ -26,6 +27,7 @@ export const AllRoutes = () => {
             <Route path='/scoreBoard' element={<ScoreBoard/>}></Route>
             <Route path='/play' element={<Play/>}></Route>
             <Route path='/leaderBoard' element={<LeaderBoard/>}></Route>
+            <Route path='/*' element={<PageNotFound/>} />
         </Routes>
     </div>
   )
