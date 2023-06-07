@@ -1,10 +1,11 @@
 import React from 'react'
-import { Box, Heading, Input } from '@chakra-ui/react'
+import { Box, Heading, Input, useToast } from '@chakra-ui/react'
 import styles from './css/Signup.module.css'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 
 export const Signin = () => {
+  const toast=useToast()
   const navigate=useNavigate()
     let initial={
         email:"",
@@ -23,7 +24,12 @@ export const Signin = () => {
             data:credential
         })
         .then(res=>{
-            alert(res.data.msg)
+            toast({
+              title:res.data.msg,
+              status:res.data.msg=='Login Successful'?'success':'warning',
+              duration:2000,
+              position:"top"
+            })
             let obj={
               token:res.data.token,
               player:res.data.player,

@@ -41,7 +41,7 @@ authRouter.post("/login", async (req, res) => {
             playerId: pull[0]._id,
           };
           res.send(obj);
-        } else res.send({ msg: "Invalid Credentials!!!" });
+        } else res.send({ msg: "Invalid Credentials" });
       });
     } else res.send({ msg: "Invalid Credentials" });
   } catch (error) {

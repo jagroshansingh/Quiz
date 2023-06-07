@@ -1,7 +1,16 @@
 .container{
     display:flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    padding-top: 1%;
     border:0px solid;
-    padding: 1%;
-    color:blue;
+    height: 70px;
+    margin-bottom: 1%;
+}
+
+.container{
+    width: 100%;
+}
+
+button{
+    margin-top: 15px;
 }

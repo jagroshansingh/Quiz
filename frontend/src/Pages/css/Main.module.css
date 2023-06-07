@@ -4,13 +4,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:aquamarine;
+  background-color:#7fffd4;
 }
 
 .container {
   border: 0px solid;
   display: grid;
-  height: 30vh;
+  height: 70vh;
   align-content: space-between;
 }
 
