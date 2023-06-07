@@ -1,13 +1,20 @@
-import { Box, Button, Image } from '@chakra-ui/react'
+import { Box, Button, Image, useToast } from '@chakra-ui/react'
 import React from 'react'
 import styles from './css/Admin.module.css'
 import { useNavigate } from 'react-router-dom'
 
 export const Admin = () => {
+  const toast=useToast()
   const navigate=useNavigate()
   const handleLogout=()=>{
     sessionStorage.removeItem('quiz')
     navigate('/')
+    toast({
+      title:'Logout Success',
+      status:'success',
+      duration:2000,
+      position:'top'
+    })
   }
   return (
     <div>
