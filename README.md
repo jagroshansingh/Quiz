@@ -20,4 +20,5 @@ A Quiz Game Application.
   <li>Player can delete and Edit only their own quizes from dashboard</li>
   <li>Edit: It pre-fills the input fileld, player just need to make the alteration and save it</li>
   <li>Handling of wrong URL</li>
+  <li>Fully Responsive for all screen sizes</li>
 </ol>
