@@ -1,12 +1,10 @@
 import { Box, Button, Heading, Select } from "@chakra-ui/react";
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./css/Play.module.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { QuizContext } from "../Contexts/QuizContext";
 
 export const Play = () => {
-  const {setQuickQuestions}=useContext(QuizContext)
   const navigate=useNavigate()
   let initial={
     category:"",
@@ -24,7 +22,6 @@ export const Play = () => {
       url:`https://opentdb.com/api.php?amount=10&category=${form.category}&difficulty=${form.difficulty}&type=multiple`,
     })
     .then(res=>{
-      setQuickQuestions(res.data.results)
       let ss=JSON.parse(sessionStorage.getItem('quiz'))||{}
       ss.quickQuestions=res.data.results
       sessionStorage.setItem('quiz',JSON.stringify(ss))

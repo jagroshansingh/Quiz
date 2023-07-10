@@ -1,10 +1,9 @@
-import { Box, Button, Heading, Input, Text } from "@chakra-ui/react";
+import { Box, Button, Heading } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./css/Quiz.module.css";
 import { Single } from "../Components/Single";
 import { useNavigate } from "react-router-dom";
-import { QuizContext } from "../Contexts/QuizContext";
 
 export const Quiz = () => {
   const navigate = useNavigate();
