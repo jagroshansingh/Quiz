@@ -22,3 +22,19 @@ A Quiz Game Application.
   <li>Handling of wrong URL</li>
   <li>Fully Responsive for all screen sizes</li>
 </ol>
+
+# Snippets
+<div>
+<img src="./screenshots/QuizApp_Dashboard.png" alt="Dashboard">
+<img src="./screenshots/mcqPage.png" alt="mcqPage">
+<img src="./screenshots/LeaderBoard.png" alt="LeaderBoard">
+<img src="./screenshots/CreateQuiz.png" alt="CreateQuiz">
+<div>
+<img src="./screenshots/Mobile-HomePage.png" alt="HomePage" width="49%">
+<img src="./screenshots/Mobile-AuthPage.png" alt="AuthPage" width="49%">
+</div>
+</div>
+
+# Related Links
+<p>Backend Repo: <a href="https://github.com/jagroshansingh/BrainBurstQuiz_Backend">https://github.com/jagroshansingh/BrainBurstQuiz_Backend</a></p>
+<p>Backend Deployed: <a href="https://drab-blue-indri-sock.cyclic.app">https://drab-blue-indri-sock.cyclic.app</a></p>
