@@ -47,7 +47,7 @@ export const Signup = () => {
         };
         if ((res.data.msg = "Signup and Login Successful")) {
           sessionStorage.setItem("quiz", JSON.stringify(obj));
-          navigate("/dashboard");
+          navigate("/CustomPlayDashboard");
         }
       })
       .catch((err) => console.log(err));

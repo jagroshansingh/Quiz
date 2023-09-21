@@ -3,18 +3,15 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
   Text,
-  Center,
   Box,
   Button,
 } from "@chakra-ui/react";
-import { Admin } from "./Admin";
+import { Navbar } from "./Navbar";
 import { QuizContext } from "../Contexts/QuizContext";
 import axios from "axios";
 import styles from "./css/LeaderBoard.module.css"
@@ -36,7 +33,7 @@ export const LeaderBoard = () => {
   }, []);
   return (
     <div className={styles.wholeBody}>
-      <Admin />
+      <Navbar />
       <TableContainer p={"20px 0px"}>
         <Table variant="striped" colorScheme="teal" size={{base:'sm',md:'md'}}>
           <Thead>
@@ -66,7 +63,7 @@ export const LeaderBoard = () => {
         </Table>
       </TableContainer>
       <Box className={styles.backContainer}>
-        <Button colorScheme="blue" onClick={()=>navigate('/dashboard')}>Back</Button>
+        <Button colorScheme="blue" onClick={()=>navigate('/CustomPlayDashboard')}>Back</Button>
       </Box>
     </div>
   );

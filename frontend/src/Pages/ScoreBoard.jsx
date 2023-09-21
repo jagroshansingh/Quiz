@@ -1,15 +1,14 @@
 import { Box, Button, Heading, VStack } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./css/ScoreBoard.module.css";
 import { useNavigate } from "react-router-dom";
-import { QuizContext } from "../Contexts/QuizContext";
 
 export const ScoreBoard = () => {
-  const {quickQuestions}=useContext(QuizContext)
   const navigate = useNavigate();
   const [totalq, setTotalq] = React.useState(null);
   let ss = JSON.parse(sessionStorage.getItem("quiz"));
+  let quickQuestions=ss.quickQuestions
 
   React.useEffect(() => {
     if (quickQuestions) setTotalq(quickQuestions.length);
@@ -51,7 +50,7 @@ export const ScoreBoard = () => {
         <Button
           colorScheme="messenger"
           variant="outline"
-          onClick={() => navigate(quickQuestions?"/play":"/dashboard")}
+          onClick={() => navigate(quickQuestions?"/QuickPlayDashboard":"/CustomPlayDashboard")}
         >
           {quickQuestions?'Play Again':'Dashboard'}
         </Button>

@@ -1,10 +1,10 @@
 import { Box, Button, Heading, Select } from "@chakra-ui/react";
 import React from "react";
-import styles from "./css/Play.module.css"
+import styles from "./css/QuickPlayDashboard.module.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const Play = () => {
+export const QuickPlayDashboard = () => {
   const navigate=useNavigate()
   let initial={
     category:"",

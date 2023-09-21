@@ -15,6 +15,7 @@ A Quiz Game Application.
 
 # Tech-functionality
 <ol>
+  <li>Session Storage: Storing of all the local data</li>
   <li>Bycrypt: Used for Hashing the password at Backend</li>
   <li>JsonWebToken: used for seemless authorisation</li>
   <li>Player can delete and Edit only their own quizes from dashboard</li>

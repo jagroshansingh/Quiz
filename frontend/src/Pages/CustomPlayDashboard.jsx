@@ -1,12 +1,12 @@
 import React from 'react'
-import { Admin } from './Admin'
+import { Navbar } from './Navbar'
 import { Box, Button, useToast } from '@chakra-ui/react'
-import styles from './css/Dashboard.module.css'
+import styles from './css/CustomPlayDashboard.module.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { CreateQuizCard } from '../Components/CreateQuizCard'
 
-export const Dashboard = () => {
+export const CustomPlayDashboard = () => {
   const toast=useToast()
   const navigate=useNavigate()
   const [data,setData]=React.useState()
@@ -42,7 +42,7 @@ export const Dashboard = () => {
   },[])
   return (
     <div className={styles.dashboard}>
-        <Admin/>
+        <Navbar/>
         <Box className={styles.createButton}>
           <Button colorScheme='blue' onClick={()=>navigate('/createQuiz')}>Create Quiz</Button>
         </Box>

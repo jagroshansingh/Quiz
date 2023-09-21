@@ -38,7 +38,7 @@ export const Signin = () => {
             if(res.data.msg='Login Successful')
             {
                 sessionStorage.setItem('quiz',JSON.stringify(obj))
-                navigate('/dashboard')
+                navigate('/CustomPlayDashboard')
             }
         })
         .catch(err=>console.log(err))

@@ -84,7 +84,7 @@ export const CreateQuiz = () => {
         data: { ...details, questionBank },
       })
         .then((res) => {
-          navigate("/dashboard");
+          navigate("/CustomPlayDashboard");
           toast({
             title: res.data,
             status:"success",
@@ -117,7 +117,7 @@ export const CreateQuiz = () => {
       headers: { quizId: edit._id },
     })
       .then((res) => {
-        navigate("/dashboard");
+        navigate("/CustomPlayDashboard");
         toast({
           title:res.data,
           status:"success",
@@ -198,7 +198,7 @@ export const CreateQuiz = () => {
             <Button onClick={handleNextQuestion}>Next</Button>
           </VStack>
           <Box className={styles.buttonContainer}>
-          <Button onClick={()=>navigate('/dashboard')}>CANCEL</Button>
+          <Button onClick={()=>navigate('/CustomPlayDashboard')}>CANCEL</Button>
             {edit ? (
               <Button colorScheme="blue" onClick={handleEdit}>
                 SUBMIT
