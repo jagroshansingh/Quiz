@@ -31,11 +31,11 @@ A Quiz Game Application.
 <img src="./screenshots/LeaderBoard.png" alt="LeaderBoard">
 <img src="./screenshots/CreateQuiz.png" alt="CreateQuiz">
 
-### Screen Screen
+<h5>Small Screen</h5>
 <div>
 <img src="./screenshots/Mobile-HomePage.png" alt="HomePage" width="33%">
 <img src="./screenshots/Mobile-mcqPage.png" alt="mcqPage" width="33%">
-<img src="./screenshots/ScoreBoard.png" alt="ScoreBoard" width="33%">
+<img src="./screenshots/Mobile-ScoreBoard.png" alt="ScoreBoard" width="33%">
 </div>
 </div>
 
