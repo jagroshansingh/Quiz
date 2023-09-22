@@ -1,17 +1,16 @@
 .mainBody {
-  border: 1px solid;
+  /* border: 1px solid; */
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color:#7fffd4;
 }
 
 .container {
-  border: 0px solid;
+  /* border: 1px solid; */
+  width: fit-content;
   display: grid;
-  height: 70vh;
-  align-content: space-between;
+  height: 100vh;
+  margin: auto;
+  align-content: space-evenly;
 }
 
 .container > button {
