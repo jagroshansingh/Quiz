@@ -1,4 +1,4 @@
-# Brain Bender 
+# Brain Burst 
 A Quiz Game Application.
 
 # How it works
@@ -17,7 +17,7 @@ A Quiz Game Application.
 <ol>
   <li>Session Storage: Storing of all the local data</li>
   <li>Bycrypt: Used for Hashing the password at Backend</li>
-  <li>JsonWebToken: used for seemless authorisation</li>
+  <li>JsonWebToken: used for seamless authorization</li>
   <li>Player can delete and Edit only their own quizes from dashboard</li>
   <li>Edit: It pre-fills the input fileld, player just need to make the alteration and save it</li>
   <li>Handling of wrong URL</li>
@@ -33,8 +33,8 @@ A Quiz Game Application.
 
 ### Small Screen
 <div>
-<img src="./screenshots/Mobile-HomePage.png" alt="HomePage" width="33%">
-<img src="./screenshots/Mobile-mcqPage.png" alt="mcqPage" width="33%">
+<img src="./screenshots/Mobile-HomePage.png" alt="HomePage" width="32%">
+<img src="./screenshots/Mobile-mcqPage.png" alt="mcqPage" width="32%">
 <img src="./screenshots/Mobile-ScoreBoard.png" alt="ScoreBoard" width="32%">
 </div>
 </div>
